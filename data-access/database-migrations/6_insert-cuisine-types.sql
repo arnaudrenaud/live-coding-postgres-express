@@ -1,0 +1,1 @@
+INSERT INTO cuisine_type(name) VALUES ('France'), ('Italie'), ('Thaïlande');
