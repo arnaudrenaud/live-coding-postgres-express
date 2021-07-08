@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "pg": "^8.6.0",
     "postgres-migrations": "^5.2.0"
   }
 }
