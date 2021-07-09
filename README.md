@@ -8,6 +8,20 @@ npm install
 
 Set environment variables following `.env.example`.
 
+## HTTP server
+
+Start server:
+
+```
+npm start
+```
+
+Start server in development mode:
+
+```
+npm run start:watch
+```
+
 ## Database migrations
 
 Run migrations:
