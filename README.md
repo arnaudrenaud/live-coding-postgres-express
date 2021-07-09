@@ -1,6 +1,14 @@
 # Postgres, Express sample app
 
-## Database migration
+## Installation
+
+```
+npm install
+```
+
+Set environment variables following `.env.example`.
+
+## Database migrations
 
 Run migrations:
 
