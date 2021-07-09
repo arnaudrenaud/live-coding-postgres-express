@@ -7,6 +7,10 @@ const ERRORS = {
     message: "RESTAURANT_WITH_UUID_DOES_NOT_EXIST",
     httpStatusCode: 404,
   },
+  NAME_CANNOT_BE_EMPTY: {
+    message: "NAME_CANNOT_BE_EMPTY",
+    httpStatusCode: 400,
+  },
 };
 
 module.exports = {

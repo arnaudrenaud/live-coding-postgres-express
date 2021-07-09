@@ -42,6 +42,9 @@ const getRestaurantByUuid = async (uuid) => {
 };
 
 const createRestaurant = async (name, ownerId) => {
+  if (!name) {
+    throw Error(ERRORS.NAME_CANNOT_BE_EMPTY.message);
+  }
   const { rowCount, rows } = await pool.query(
     "INSERT INTO restaurant(name, owner_id) VALUES ($1, $2) RETURNING uuid, name, owner_id;",
     [name, ownerId]

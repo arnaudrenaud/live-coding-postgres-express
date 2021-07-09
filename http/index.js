@@ -7,6 +7,7 @@ const restaurantsRouter = require("./routers/restaurants");
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 
 app.use("/restaurants", restaurantsRouter);
 
