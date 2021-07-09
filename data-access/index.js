@@ -13,6 +13,14 @@ const getRestaurants = async () => {
   return { rowCount, rows };
 };
 
+const getRestaurantsByOwnerId = async (ownerId) => {
+  const { rowCount, rows } = await pool.query(
+    "SELECT uuid, name, owner_id FROM restaurant WHERE owner_id=$1;",
+    [ownerId]
+  );
+  return { rowCount, rows };
+};
+
 const getRestaurantByUuid = async (uuid) => {
   try {
     const { rows } = await pool.query(
@@ -43,6 +51,7 @@ const createRestaurant = async (name, ownerId) => {
 
 module.exports = {
   getRestaurants,
+  getRestaurantsByOwnerId,
   getRestaurantByUuid,
   createRestaurant,
 };
