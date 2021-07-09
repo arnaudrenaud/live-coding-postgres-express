@@ -10,15 +10,13 @@ const { asyncErrorHandler } = require("../utils");
 
 const router = express.Router();
 
-const getAuthenticatedUserId = () => 1;
-
 router.get(
   "/",
   asyncErrorHandler(async (req, res) => {
     if (req.query.filter === "mine") {
-      const authenticatedUserId = getAuthenticatedUserId();
       res.json({
-        restaurants: (await getRestaurantsByOwnerId(authenticatedUserId)).rows,
+        restaurants: (await getRestaurantsByOwnerId(req.authenticatedUserId))
+          .rows,
       });
     } else {
       res.json({ restaurants: (await getRestaurants()).rows });
@@ -36,11 +34,12 @@ router.get(
 
 router.post(
   "/",
-  asyncErrorHandler(async (req, res, next) => {
-    const authenticatedUserId = getAuthenticatedUserId();
-
+  asyncErrorHandler(async (req, res) => {
     const { name } = req.body;
-    const createdRestaurant = await createRestaurant(name, authenticatedUserId);
+    const createdRestaurant = await createRestaurant(
+      name,
+      req.authenticatedUserId
+    );
     res.status(201).json(createdRestaurant);
   })
 );

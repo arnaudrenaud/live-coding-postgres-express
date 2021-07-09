@@ -4,11 +4,17 @@ const dotenv = require("dotenv");
 const { ERRORS } = require("../errors");
 const restaurantsRouter = require("./routers/restaurants");
 
+const getAuthenticatedUserId = () => 1;
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  req.authenticatedUserId = getAuthenticatedUserId();
+  next();
+});
 app.use("/restaurants", restaurantsRouter);
 
 const errorHandler = async (err, req, res, next) => {
